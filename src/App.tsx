@@ -411,8 +411,8 @@ function TerminalCard({ colors }: { colors: typeof DARK }) {
           <span style={{ color: colors.muted }}>uptime</span>
         </div>
         <div className="text-xs" style={{ color: colors.muted }}>
-          coding for <span style={{ color: colors.text }}>3+ years</span> ·
-          fueled by iced coffee
+          coding for <span style={{ color: colors.text }}>2+ years</span> ·
+          fueled by codex XD
         </div>
         <div
           className="pt-2 flex items-center gap-2"
