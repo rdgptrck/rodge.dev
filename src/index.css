@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-bg: #121212;
+  --color-surface: #1a1a1a;
+  --color-border: #2a2a2a;
+  --color-text: #F4F4F4;
+  --color-muted: #888888;
+  --color-accent: #00FF66;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #121212;
+  color: #F4F4F4;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00FF66;
+}
+
+::selection {
+  background: #00FF66;
+  color: #121212;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.font-sans {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Keep the About heading close to its section divider after the hero removal. */
+#about {
+  padding-top: 7rem;
+}
+
+#about > div > div:first-child {
+  margin-bottom: 2.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
