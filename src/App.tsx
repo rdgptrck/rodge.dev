@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 type Theme = "dark" | "light";
 const ThemeContext = createContext<{ theme: Theme; toggle: () => void }>({
   theme: "dark",
-  toggle: () => {},
+  toggle: () => { },
 });
 const useTheme = () => useContext(ThemeContext);
 const DARK = {
@@ -363,13 +363,12 @@ function TerminalCard({ colors }: { colors: typeof DARK }) {
           style={{ background: "#28CA42" }}
         />
         <span className="ml-3 text-xs" style={{ color: colors.muted }}>
-          whoami.sh
+          aboutme.sh
         </span>
       </div>
       <div className="p-5 space-y-3 flex-1">
         <div>
           <span style={{ color: colors.accent }}>$ </span>
-          <span style={{ color: colors.muted }}>cat</span>
           <span style={{ color: colors.text }}> profile.json</span>
         </div>
         <div
