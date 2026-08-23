@@ -843,13 +843,6 @@ function Footer() {
         <span className="font-mono text-xs" style={{ color: colors.border }}>
           © 2026 Rodge Pangilinan. Built with React + Tailwind CSS.
         </span>
-        <div
-          className="flex items-center gap-2 font-mono text-xs"
-          style={{ color: colors.muted }}
-        >
-          <span style={{ color: colors.accent }}>●</span>
-          <span>available for work</span>
-        </div>
       </div>
     </footer>
   );
