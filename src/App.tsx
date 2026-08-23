@@ -1,138 +1,211 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react"
 
-type Theme = "dark" | "light";
+type Theme = "dark" | "light"
+
 const ThemeContext = createContext<{ theme: Theme; toggle: () => void }>({
   theme: "light",
-  toggle: () => { },
-});
-const useTheme = () => useContext(ThemeContext);
+  toggle: () => {},
+})
+
+const useTheme = () => useContext(ThemeContext)
+
 const DARK = {
   bg: "#121212",
+
   surface: "#0d0d0d",
+
   border: "#2a2a2a",
+
   text: "#F4F4F4",
+
   muted: "#888888",
+
   accent: "#00FF66",
+
   accentText: "#121212",
-};
+}
+
 const LIGHT = {
   bg: "#F4F4F4",
+
   surface: "#EBEBEB",
+
   border: "#D0D0D0",
+
   text: "#121212",
+
   muted: "#555555",
+
   accent: "#007A33",
+
   accentText: "#F4F4F4",
-};
+}
 
 const NAV_LINKS = [
   { label: "about", href: "#about" },
+
   { label: "projects", href: "#projects" },
+
   { label: "experience", href: "#experience" },
+
   { label: "contact", href: "#contact" },
-];
+]
+
 const TECH_STACK = [
   {
     category: "Languages",
+
     items: ["C / C#", "Java", "JavaScript / TypeScript", "Python"],
   },
+
   {
     category: "Frontend",
+
     items: ["React", "Next.js", "Tailwind CSS", "HTML/CSS"],
   },
+
   {
     category: "Backend",
+
     items: ["Node.js", "Express", "PostgreSQL", "REST APIs"],
   },
+
   { category: "Tools", items: ["Git", "Figma", "VS Code", "Codex"] },
-];
+]
+
 const PROJECTS = [
   {
     id: "01",
+
     title: "Corevia",
+
     description:
       "Ongoing client project in the design and planning phase. Geared toward pharmacy inventory management with automated batch expiration tracking, stock level monitoring, and spoilage reduction workflows.",
+
     stack: ["React", "Tailwind CSS", "Node.js", "SQLite"],
+
     year: "2026",
+
     badge: "In Planning",
   },
+
   {
     id: "02",
+
     title: "ShuttleZone",
+
     description:
       "Point-of-Sale and inventory management system engineered for badminton facility operations. Handles equipment rental tracking, court booking schedules, sales processing, and real-time inventory updates with relational database persistence.",
+
     stack: ["C#", ".NET", "MySQL", "Visual Studio"],
+
     year: "2026",
   },
+
   {
     id: "03",
+
     title: "Enterprise Attendance & Payroll System",
+
     description:
       "Desktop-based enterprise management utility featuring automated attendance tracking, shift and tax deduction calculations, and secure localized employee records management via SQLite.",
+
     stack: [".NET", "C#", "SQLite", "Visual Studio"],
+
     year: "2025",
   },
+
   {
     id: "04",
+
     title: "Reactify",
+
     description:
       "Interactive educational web application featuring a dynamic Periodic Table of Elements. Includes a sandbox simulation mode that visualizes chemical combinations and reactions based on element properties.",
+
     stack: ["JavaScript", "HTML5", "CSS3"],
+
     year: "2025",
   },
-];
+]
+
 const EXPERIENCE = [
   {
     period: "2024 — Present",
+
     role: "Student Assistant (Staff)",
+
     company: "Management Information System Office",
   },
+
   {
     period: "2026 — 2027",
+
     role: "Vice President Internal",
+
     company: "Association of Computer E-Students",
   },
+
   {
     period: "2025 — 2026",
+
     role: "Executive, Technical Committee",
+
     company: "Computer Science Council",
   },
+
   {
     period: "2025 — 2026",
+
     role: "Technical Committee",
+
     company: "College of Liberal Arts and Sciences",
   },
+
   {
     period: "2024 — 2024",
+
     role: "Operations Committee",
+
     company: "Association of Computer E-Students",
   },
-];
+]
 
 function useActiveSection(ids: string[]) {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("")
+
   useEffect(() => {
     const observers = ids.map((id) => {
-      const element = document.getElementById(id);
-      if (!element) return null;
+      const element = document.getElementById(id)
+
+      if (!element) return null
+
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setActive(id);
+          if (entry.isIntersecting) setActive(id)
         },
+
         { rootMargin: "-40% 0px -55% 0px" },
-      );
-      observer.observe(element);
-      return observer;
-    });
-    return () => observers.forEach((observer) => observer?.disconnect());
-  }, [ids]);
-  return active;
+      )
+
+      observer.observe(element)
+
+      return observer
+    })
+
+    return () => observers.forEach((observer) => observer?.disconnect())
+  }, [ids])
+
+  return active
 }
 
 function ThemeToggle() {
-  const { theme, toggle } = useTheme();
-  const colors = theme === "dark" ? DARK : LIGHT;
-  const isDark = theme === "dark";
+  const { theme, toggle } = useTheme()
+
+  const colors = theme === "dark" ? DARK : LIGHT
+
+  const isDark = theme === "dark"
+
   return (
     <button
       onClick={toggle}
@@ -155,6 +228,7 @@ function ThemeToggle() {
         className="relative inline-flex items-center w-10 h-5 rounded-full transition-colors duration-300"
         style={{
           background: isDark ? "#1a1a1a" : "#D0D0D0",
+
           border: `1px solid ${colors.border}`,
         }}
       >
@@ -162,37 +236,51 @@ function ThemeToggle() {
           className="absolute w-3.5 h-3.5 rounded-full transition-all duration-300"
           style={{
             background: colors.accent,
+
             left: isDark ? "2px" : "calc(100% - 18px)",
           }}
         />
       </span>
     </button>
-  );
+  )
 }
 
 function Nav() {
-  const { theme } = useTheme();
-  const colors = theme === "dark" ? DARK : LIGHT;
-  const [scrolled, setScrolled] = useState(false);
+  const { theme } = useTheme()
+
+  const colors = theme === "dark" ? DARK : LIGHT
+
+  const [scrolled, setScrolled] = useState(false)
+
   const active = useActiveSection([
     "about",
+
     "projects",
+
     "experience",
+
     "contact",
-  ]);
+  ])
+
   useEffect(() => {
-    const handle = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handle);
-    return () => window.removeEventListener("scroll", handle);
-  }, []);
+    const handle = () => setScrolled(window.scrollY > 40)
+
+    window.addEventListener("scroll", handle)
+
+    return () => window.removeEventListener("scroll", handle)
+  }, [])
+
   const background =
-    theme === "dark" ? "rgba(18,18,18,0.95)" : "rgba(244,244,244,0.95)";
+    theme === "dark" ? "rgba(18,18,18,0.95)" : "rgba(244,244,244,0.95)"
+
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
         background: scrolled ? background : "transparent",
+
         backdropFilter: scrolled ? "blur(12px)" : "none",
+
         borderBottom: scrolled
           ? `1px solid ${colors.border}`
           : "1px solid transparent",
@@ -233,11 +321,11 @@ function Nav() {
         </div>
       </div>
     </nav>
-  );
+  )
 }
 
 function ProfileAvatar({ colors }: { colors: typeof DARK }) {
-  const [imgError, setImgError] = useState(false);
+  const [imgError, setImgError] = useState(false)
 
   return (
     <div className="relative group shrink-0">
@@ -245,7 +333,9 @@ function ProfileAvatar({ colors }: { colors: typeof DARK }) {
         className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex items-center justify-center transition-all duration-300 group-hover:scale-[1.02]"
         style={{
           background: colors.surface,
+
           border: `1px solid ${colors.accent}`,
+
           boxShadow: `0 0 24px -6px ${colors.accent}33`,
         }}
       >
@@ -262,6 +352,7 @@ function ProfileAvatar({ colors }: { colors: typeof DARK }) {
               className="w-16 h-16 rounded-full flex items-center justify-center mb-2"
               style={{
                 background: `${colors.accent}15`,
+
                 border: `1px dashed ${colors.accent}80`,
               }}
             >
@@ -286,6 +377,7 @@ function ProfileAvatar({ colors }: { colors: typeof DARK }) {
           className="absolute inset-0 pointer-events-none opacity-15"
           style={{
             backgroundImage: `linear-gradient(${colors.border} 1px, transparent 1px), linear-gradient(90deg, ${colors.border} 1px, transparent 1px)`,
+
             backgroundSize: "12px 12px",
           }}
         />
@@ -317,17 +409,16 @@ function ProfileAvatar({ colors }: { colors: typeof DARK }) {
         </span>
       </div>
     </div>
-  );
+  )
 }
 
 function About() {
-  const { theme } = useTheme();
-  const colors = theme === "dark" ? DARK : LIGHT;
+  const { theme } = useTheme()
+
+  const colors = theme === "dark" ? DARK : LIGHT
+
   return (
-    <section
-      id="about"
-      className="py-16 lg:py-20 pt-20 lg:pt-24 px-6"
-    >
+    <section id="about" className="py-16 lg:py-20 pt-20 lg:pt-24 px-6">
       <div className="max-w-5xl mx-auto w-full">
         <div className="flex items-baseline gap-4 mb-8 lg:mb-10">
           <span
@@ -395,6 +486,7 @@ function About() {
                   className="font-mono text-xs tracking-widest uppercase mb-4 pb-2"
                   style={{
                     color: colors.accent,
+
                     borderBottom: `1px solid ${colors.border}`,
                   }}
                 >
@@ -424,7 +516,7 @@ function About() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function TerminalCard({ colors }: { colors: typeof DARK }) {
@@ -433,8 +525,11 @@ function TerminalCard({ colors }: { colors: typeof DARK }) {
       className="font-mono text-sm"
       style={{
         background: colors.surface,
+
         border: `1px solid ${colors.border}`,
+
         display: "flex",
+
         flexDirection: "column",
       }}
     >
@@ -467,6 +562,7 @@ function TerminalCard({ colors }: { colors: typeof DARK }) {
           className="text-xs leading-relaxed pl-2 py-3"
           style={{
             borderLeft: `2px solid ${colors.accent}`,
+
             color: colors.muted,
           }}
         >
@@ -514,13 +610,16 @@ function TerminalCard({ colors }: { colors: typeof DARK }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function Projects() {
-  const { theme } = useTheme();
-  const colors = theme === "dark" ? DARK : LIGHT;
-  const [hovered, setHovered] = useState<string | null>(null);
+  const { theme } = useTheme()
+
+  const colors = theme === "dark" ? DARK : LIGHT
+
+  const [hovered, setHovered] = useState<string | null>(null)
+
   return (
     <section id="projects" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -548,6 +647,7 @@ function Projects() {
               className="group relative py-8 transition-all duration-200 cursor-default"
               style={{
                 borderBottom: `1px solid ${colors.border}`,
+
                 background:
                   hovered === project.id
                     ? theme === "dark"
@@ -590,7 +690,9 @@ function Projects() {
                         className="font-mono text-xs px-2 py-0.5"
                         style={{
                           border: `1px solid ${colors.accent}`,
+
                           color: colors.accent,
+
                           opacity: 0.8,
                         }}
                       >
@@ -611,6 +713,7 @@ function Projects() {
                         className="font-mono text-xs px-2 py-0.5"
                         style={{
                           border: `1px solid ${colors.border}`,
+
                           color: colors.muted,
                         }}
                       >
@@ -625,12 +728,14 @@ function Projects() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function Experience() {
-  const { theme } = useTheme();
-  const colors = theme === "dark" ? DARK : LIGHT;
+  const { theme } = useTheme()
+
+  const colors = theme === "dark" ? DARK : LIGHT
+
   return (
     <section id="experience" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -673,6 +778,7 @@ function Experience() {
                     className="w-3 h-3 rounded-full border transition-all duration-200 group-hover:scale-125"
                     style={{
                       borderColor: colors.accent,
+
                       background: colors.bg,
                     }}
                   />
@@ -699,40 +805,56 @@ function Experience() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function Contact() {
-  const { theme } = useTheme();
-  const colors = theme === "dark" ? DARK : LIGHT;
-  const [copied, setCopied] = useState(false);
+  const { theme } = useTheme()
+
+  const colors = theme === "dark" ? DARK : LIGHT
+
+  const [copied, setCopied] = useState(false)
+
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText("rodge.pangilinan@gmail.com");
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      await navigator.clipboard.writeText("rodge.pangilinan@gmail.com")
+
+      setCopied(true)
+
+      setTimeout(() => setCopied(false), 2000)
     } catch {
-      window.location.href = "mailto:rodge.pangilinan@gmail.com";
+      window.location.href = "mailto:rodge.pangilinan@gmail.com"
     }
-  };
+  }
+
   const links = [
     {
       cmd: "email",
+
       value: "rodge.pangilinan@gmail.com",
+
       action: copyEmail,
+
       note: copied ? "// copied!" : "// click to copy",
     },
+
     {
       cmd: "github",
+
       value: "github.com/rdgptrck",
+
       href: "https://github.com/rdgptrck",
     },
+
     {
       cmd: "linkedin",
+
       value: "linkedin.com/in/rodge-patrick-pangilinan",
+
       href: "https://linkedin.com/in/rodge-patrick-pangilinan",
     },
-  ];
+  ]
+
   return (
     <section id="contact" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -762,6 +884,7 @@ function Contact() {
           className="p-6 font-mono text-sm space-y-3"
           style={{
             background: colors.surface,
+
             border: `1px solid ${colors.border}`,
           }}
         >
@@ -769,6 +892,7 @@ function Contact() {
             className="text-xs mb-4 pb-4"
             style={{
               color: colors.border,
+
               borderBottom: `1px solid ${colors.border}`,
             }}
           >
@@ -786,6 +910,7 @@ function Contact() {
                   className="transition-colors duration-150 underline underline-offset-4 cursor-pointer"
                   style={{
                     color: colors.muted,
+
                     textDecorationColor: colors.border,
                   }}
                 >
@@ -799,6 +924,7 @@ function Contact() {
                   className="transition-colors duration-150 underline underline-offset-4"
                   style={{
                     color: colors.muted,
+
                     textDecorationColor: colors.border,
                   }}
                 >
@@ -828,12 +954,14 @@ function Contact() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function Footer() {
-  const { theme } = useTheme();
-  const colors = theme === "dark" ? DARK : LIGHT;
+  const { theme } = useTheme()
+
+  const colors = theme === "dark" ? DARK : LIGHT
+
   return (
     <footer
       className="py-8 px-6"
@@ -845,21 +973,27 @@ function Footer() {
         </span>
       </div>
     </footer>
-  );
+  )
 }
 
 export default function App() {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("light")
+
   const toggle = () =>
-    setTheme((value) => (value === "dark" ? "light" : "dark"));
-  const colors = theme === "dark" ? DARK : LIGHT;
+    setTheme((value) => (value === "dark" ? "light" : "dark"))
+
+  const colors = theme === "dark" ? DARK : LIGHT
+
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>
       <div
         style={{
           background: colors.bg,
+
           color: colors.text,
+
           minHeight: "100vh",
+
           transition: "background 0.3s ease, color 0.3s ease",
         }}
       >
@@ -876,5 +1010,5 @@ export default function App() {
         <Footer />
       </div>
     </ThemeContext.Provider>
-  );
+  )
 }
