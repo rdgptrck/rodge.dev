@@ -326,10 +326,10 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-[85vh] flex flex-col justify-center py-20 lg:py-28 pt-28 lg:pt-36 px-6"
+      className="py-16 lg:py-20 pt-20 lg:pt-24 px-6"
     >
       <div className="max-w-5xl mx-auto w-full">
-        <div className="flex items-baseline gap-4 mb-12 lg:mb-16">
+        <div className="flex items-baseline gap-4 mb-8 lg:mb-10">
           <span
             className="font-mono text-xs tracking-widest uppercase"
             style={{ color: colors.accent }}
@@ -338,7 +338,7 @@ function About() {
           </span>
           <div className="flex-1 h-px" style={{ background: colors.border }} />
         </div>
-        <div className="grid md:grid-cols-[1fr_380px] gap-10 lg:gap-14 mb-24 lg:mb-32 items-start">
+        <div className="grid md:grid-cols-[1fr_380px] gap-10 lg:gap-14 mb-10 lg:mb-12 items-start">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
               <ProfileAvatar colors={colors} />
@@ -381,9 +381,9 @@ function About() {
           </div>
           <TerminalCard colors={colors} />
         </div>
-        <div className="pt-8">
+        <div className="pt-2">
           <div
-            className="font-mono text-xs tracking-widest uppercase mb-8"
+            className="font-mono text-xs tracking-widest uppercase mb-6"
             style={{ color: colors.muted }}
           >
             tech stack
