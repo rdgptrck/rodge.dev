@@ -251,10 +251,10 @@ function ProfileAvatar({ colors }: { colors: typeof DARK }) {
       >
         {!imgError ? (
           <img
-            src="/avatar.svg"
+            src="/2x2_Formal-removebg.png"
             alt="Rodge Patrick Pangilinan"
             onError={() => setImgError(true)}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center select-none">
@@ -315,22 +315,6 @@ function ProfileAvatar({ colors }: { colors: typeof DARK }) {
         >
           ┘
         </span>
-      </div>
-
-      {/* Terminal status badge */}
-      <div
-        className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full font-mono text-[10px] uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap shadow-sm"
-        style={{
-          background: colors.bg,
-          border: `1px solid ${colors.border}`,
-          color: colors.muted,
-        }}
-      >
-        <span
-          className="w-1.5 h-1.5 rounded-full animate-pulse"
-          style={{ background: colors.accent }}
-        />
-        <span>user.profile</span>
       </div>
     </div>
   );
