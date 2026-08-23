@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "dark" | "light";
 const ThemeContext = createContext<{ theme: Theme; toggle: () => void }>({
-  theme: "dark",
+  theme: "light",
   toggle: () => { },
 });
 const useTheme = () => useContext(ThemeContext);
@@ -849,7 +849,7 @@ function Footer() {
 }
 
 export default function App() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const toggle = () =>
     setTheme((value) => (value === "dark" ? "light" : "dark"));
   const colors = theme === "dark" ? DARK : LIGHT;

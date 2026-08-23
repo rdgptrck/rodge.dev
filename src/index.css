@@ -23,8 +23,8 @@ html {
 
 body {
   margin: 0;
-  background-color: #121212;
-  color: #F4F4F4;
+  background-color: #F4F4F4;
+  color: #121212;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
