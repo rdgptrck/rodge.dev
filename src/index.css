@@ -59,14 +59,7 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* Keep the About heading close to its section divider after the hero removal. */
-#about {
-  padding-top: 7rem;
-}
-
-#about > div > div:first-child {
-  margin-bottom: 2.5rem;
-}
+/* Smooth scrolling and transitions */
 
 @media (prefers-reduced-motion: reduce) {
   *,

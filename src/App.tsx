@@ -242,38 +242,38 @@ function ProfileAvatar({ colors }: { colors: typeof DARK }) {
   return (
     <div className="relative group shrink-0">
       <div
-        className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-300 group-hover:scale-[1.02]"
+        className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex items-center justify-center transition-all duration-300 group-hover:scale-[1.02]"
         style={{
           background: colors.surface,
           border: `1px solid ${colors.accent}`,
-          boxShadow: `0 0 20px -5px ${colors.accent}33`,
+          boxShadow: `0 0 24px -6px ${colors.accent}33`,
         }}
       >
         {!imgError ? (
           <img
             src="/avatar.svg"
-            alt="Rodge Pangilinan"
+            alt="Rodge Patrick Pangilinan"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover"
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center select-none">
             <div
-              className="w-12 h-12 rounded-full flex items-center justify-center mb-1.5"
+              className="w-16 h-16 rounded-full flex items-center justify-center mb-2"
               style={{
                 background: `${colors.accent}15`,
                 border: `1px dashed ${colors.accent}80`,
               }}
             >
               <span
-                className="font-mono text-base font-bold"
+                className="font-mono text-xl font-bold"
                 style={{ color: colors.accent }}
               >
                 RP
               </span>
             </div>
             <span
-              className="font-mono text-[10px] tracking-widest uppercase"
+              className="font-mono text-[11px] tracking-widest uppercase"
               style={{ color: colors.muted }}
             >
               avatar.raw
@@ -286,31 +286,31 @@ function ProfileAvatar({ colors }: { colors: typeof DARK }) {
           className="absolute inset-0 pointer-events-none opacity-15"
           style={{
             backgroundImage: `linear-gradient(${colors.border} 1px, transparent 1px), linear-gradient(90deg, ${colors.border} 1px, transparent 1px)`,
-            backgroundSize: "10px 10px",
+            backgroundSize: "12px 12px",
           }}
         />
 
         {/* Tech Corner Crosshairs */}
         <span
-          className="absolute top-1.5 left-1.5 font-mono text-[9px] leading-none select-none pointer-events-none"
+          className="absolute top-2 left-2 font-mono text-[10px] leading-none select-none pointer-events-none"
           style={{ color: colors.accent }}
         >
           ┌
         </span>
         <span
-          className="absolute top-1.5 right-1.5 font-mono text-[9px] leading-none select-none pointer-events-none"
+          className="absolute top-2 right-2 font-mono text-[10px] leading-none select-none pointer-events-none"
           style={{ color: colors.accent }}
         >
           ┐
         </span>
         <span
-          className="absolute bottom-1.5 left-1.5 font-mono text-[9px] leading-none select-none pointer-events-none"
+          className="absolute bottom-2 left-2 font-mono text-[10px] leading-none select-none pointer-events-none"
           style={{ color: colors.accent }}
         >
           └
         </span>
         <span
-          className="absolute bottom-1.5 right-1.5 font-mono text-[9px] leading-none select-none pointer-events-none"
+          className="absolute bottom-2 right-2 font-mono text-[10px] leading-none select-none pointer-events-none"
           style={{ color: colors.accent }}
         >
           ┘
@@ -319,7 +319,7 @@ function ProfileAvatar({ colors }: { colors: typeof DARK }) {
 
       {/* Terminal status badge */}
       <div
-        className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full font-mono text-[9px] uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap shadow-sm"
+        className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full font-mono text-[10px] uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap shadow-sm"
         style={{
           background: colors.bg,
           border: `1px solid ${colors.border}`,
@@ -340,9 +340,12 @@ function About() {
   const { theme } = useTheme();
   const colors = theme === "dark" ? DARK : LIGHT;
   return (
-    <section id="about" className="py-24 px-6 pt-32">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex items-baseline gap-4 mb-16">
+    <section
+      id="about"
+      className="min-h-[85vh] flex flex-col justify-center py-20 lg:py-28 pt-28 lg:pt-36 px-6"
+    >
+      <div className="max-w-5xl mx-auto w-full">
+        <div className="flex items-baseline gap-4 mb-12 lg:mb-16">
           <span
             className="font-mono text-xs tracking-widest uppercase"
             style={{ color: colors.accent }}
@@ -351,29 +354,29 @@ function About() {
           </span>
           <div className="flex-1 h-px" style={{ background: colors.border }} />
         </div>
-        <div className="grid md:grid-cols-[1fr_380px] gap-12 mb-16 items-start">
+        <div className="grid md:grid-cols-[1fr_380px] gap-10 lg:gap-14 mb-24 lg:mb-32 items-start">
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
               <ProfileAvatar colors={colors} />
               <div>
                 <h1
-                  className="font-mono font-bold leading-none mb-3"
-                  style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
+                  className="font-mono font-bold leading-[1.08] tracking-tight mb-3"
+                  style={{ fontSize: "clamp(2.35rem, 5.2vw, 4rem)" }}
                 >
-                  <span style={{ color: colors.text }}>Rodge</span>
+                  <span style={{ color: colors.text }}>Rodge Patrick</span>
                   <br />
                   <span style={{ color: colors.accent }}>Pangilinan</span>
                 </h1>
                 <p
-                  className="font-mono text-sm"
+                  className="font-mono text-sm sm:text-base font-medium"
                   style={{ color: colors.accent }}
                 >
-                  Aspiring Software Engineer · CS Undergrad · Tech Enthusiast
+                  Aspiring Software Engineer · CS Undergrad
                 </p>
               </div>
             </div>
             <p
-              className="font-sans text-base leading-relaxed"
+              className="font-sans text-base leading-relaxed max-w-xl"
               style={{ color: colors.muted }}
             >
               Third-year CS student who genuinely enjoys building things — from
@@ -384,7 +387,7 @@ function About() {
           </div>
           <TerminalCard colors={colors} />
         </div>
-        <div className="mt-16">
+        <div className="pt-8">
           <div
             className="font-mono text-xs tracking-widest uppercase mb-8"
             style={{ color: colors.muted }}
@@ -475,7 +478,7 @@ function TerminalCard({ colors }: { colors: typeof DARK }) {
         >
           <div>
             <span style={{ color: colors.accent }}>&quot;name&quot;</span>:
-            &quot;Rodge Pangilinan&quot;,
+            &quot;Rodge Patrick Pangilinan&quot;,
           </div>
           <div>
             <span style={{ color: colors.accent }}>&quot;role&quot;</span>:
@@ -491,13 +494,13 @@ function TerminalCard({ colors }: { colors: typeof DARK }) {
           <div>
             <span style={{ color: colors.accent }}>&quot;status&quot;</span>:{" "}
             <span style={{ color: colors.accent }}>
-              &quot;open to internships&quot;
+              &quot;development ongoing&quot;
             </span>
             ,
           </div>
           <div>
             <span style={{ color: colors.accent }}>&quot;location&quot;</span>:
-            &quot;Philippines&quot;
+            &quot;Caloocan, Philippines&quot;
           </div>
         </div>
         <div className="pt-2">
