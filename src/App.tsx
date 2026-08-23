@@ -368,6 +368,16 @@ function About() {
               projects. I care a lot about writing clean code and shipping
               projects that actually work for real people.
             </p>
+            <p
+              className="font-sans text-base leading-relaxed max-w-xl"
+              style={{ color: colors.muted }}
+            >
+              Currently looking for internship and entry-level opportunities
+              where I can contribute, grow fast, and work alongside people
+              smarter than me. When I&apos;m not coding, I&apos;m probably on
+              the badminton court, watching tech vids, or debugging something I
+              wrote at 2am.
+            </p>
           </div>
           <TerminalCard colors={colors} />
         </div>
