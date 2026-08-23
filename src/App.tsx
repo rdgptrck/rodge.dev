@@ -236,6 +236,106 @@ function Nav() {
   );
 }
 
+function ProfileAvatar({ colors }: { colors: typeof DARK }) {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <div className="relative group shrink-0">
+      <div
+        className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-300 group-hover:scale-[1.02]"
+        style={{
+          background: colors.surface,
+          border: `1px solid ${colors.accent}`,
+          boxShadow: `0 0 20px -5px ${colors.accent}33`,
+        }}
+      >
+        {!imgError ? (
+          <img
+            src="/avatar.svg"
+            alt="Rodge Pangilinan"
+            onError={() => setImgError(true)}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center select-none">
+            <div
+              className="w-12 h-12 rounded-full flex items-center justify-center mb-1.5"
+              style={{
+                background: `${colors.accent}15`,
+                border: `1px dashed ${colors.accent}80`,
+              }}
+            >
+              <span
+                className="font-mono text-base font-bold"
+                style={{ color: colors.accent }}
+              >
+                RP
+              </span>
+            </div>
+            <span
+              className="font-mono text-[10px] tracking-widest uppercase"
+              style={{ color: colors.muted }}
+            >
+              avatar.raw
+            </span>
+          </div>
+        )}
+
+        {/* Cyber grid / scanline subtle accent */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-15"
+          style={{
+            backgroundImage: `linear-gradient(${colors.border} 1px, transparent 1px), linear-gradient(90deg, ${colors.border} 1px, transparent 1px)`,
+            backgroundSize: "10px 10px",
+          }}
+        />
+
+        {/* Tech Corner Crosshairs */}
+        <span
+          className="absolute top-1.5 left-1.5 font-mono text-[9px] leading-none select-none pointer-events-none"
+          style={{ color: colors.accent }}
+        >
+          ┌
+        </span>
+        <span
+          className="absolute top-1.5 right-1.5 font-mono text-[9px] leading-none select-none pointer-events-none"
+          style={{ color: colors.accent }}
+        >
+          ┐
+        </span>
+        <span
+          className="absolute bottom-1.5 left-1.5 font-mono text-[9px] leading-none select-none pointer-events-none"
+          style={{ color: colors.accent }}
+        >
+          └
+        </span>
+        <span
+          className="absolute bottom-1.5 right-1.5 font-mono text-[9px] leading-none select-none pointer-events-none"
+          style={{ color: colors.accent }}
+        >
+          ┘
+        </span>
+      </div>
+
+      {/* Terminal status badge */}
+      <div
+        className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full font-mono text-[9px] uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap shadow-sm"
+        style={{
+          background: colors.bg,
+          border: `1px solid ${colors.border}`,
+          color: colors.muted,
+        }}
+      >
+        <span
+          className="w-1.5 h-1.5 rounded-full animate-pulse"
+          style={{ background: colors.accent }}
+        />
+        <span>user.profile</span>
+      </div>
+    </div>
+  );
+}
+
 function About() {
   const { theme } = useTheme();
   const colors = theme === "dark" ? DARK : LIGHT;
@@ -251,40 +351,35 @@ function About() {
           </span>
           <div className="flex-1 h-px" style={{ background: colors.border }} />
         </div>
-        <div className="grid md:grid-cols-[1fr_380px] gap-12 mb-16">
-          <div>
-            <h1
-              className="font-mono font-bold leading-none mb-6"
-              style={{ fontSize: "clamp(3rem, 7vw, 6rem)" }}
-            >
-              <span style={{ color: colors.text }}>Rodge</span>
-              <br />
-              <span style={{ color: colors.accent }}>Pangilinan</span>
-            </h1>
+        <div className="grid md:grid-cols-[1fr_380px] gap-12 mb-16 items-start">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+              <ProfileAvatar colors={colors} />
+              <div>
+                <h1
+                  className="font-mono font-bold leading-none mb-3"
+                  style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
+                >
+                  <span style={{ color: colors.text }}>Rodge</span>
+                  <br />
+                  <span style={{ color: colors.accent }}>Pangilinan</span>
+                </h1>
+                <p
+                  className="font-mono text-sm"
+                  style={{ color: colors.accent }}
+                >
+                  Aspiring Software Engineer · CS Undergrad · Tech Enthusiast
+                </p>
+              </div>
+            </div>
             <p
-              className="font-mono text-sm mb-5"
-              style={{ color: colors.accent }}
-            >
-              Aspiring Software Engineer · CS Undergrad · Tech Enthusiast
-            </p>
-            <p
-              className="font-sans text-base leading-relaxed mb-4"
+              className="font-sans text-base leading-relaxed"
               style={{ color: colors.muted }}
             >
               Third-year CS student who genuinely enjoys building things — from
               responsive web apps to interactive prototypes and practical side
               projects. I care a lot about writing clean code and shipping
               projects that actually work for real people.
-            </p>
-            <p
-              className="font-sans text-base leading-relaxed"
-              style={{ color: colors.muted }}
-            >
-              Currently looking for internship and entry-level opportunities
-              where I can contribute, grow fast, and work alongside people
-              smarter than me. When I&apos;m not coding, I&apos;m probably on
-              the badminton court, watching tech talks, or debugging something I
-              wrote at 2am.
             </p>
           </div>
           <TerminalCard colors={colors} />
