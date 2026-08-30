@@ -34,7 +34,7 @@ const EXPERIENCE = [
   },
 
   {
-    period: "2024 — 2024",
+    period: "2024 — 2025",
 
     role: "Operations Committee",
 
