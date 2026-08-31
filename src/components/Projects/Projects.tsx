@@ -15,6 +15,8 @@ const PROJECTS = [
     year: "2026",
 
     badge: "In Planning",
+
+    github: "https://github.com/rdgptrck/corevia",
   },
 
   {
@@ -28,6 +30,8 @@ const PROJECTS = [
     stack: ["C#", ".NET", "MySQL", "Visual Studio"],
 
     year: "2026",
+
+    github: "https://github.com/rdgptrck/shuttlezone",
   },
 
   {
@@ -41,6 +45,8 @@ const PROJECTS = [
     stack: [".NET", "C#", "SQLite", "Visual Studio"],
 
     year: "2025",
+
+    github: "https://github.com/rdgptrck/enterprise-attendance-payroll",
   },
 
   {
@@ -54,6 +60,8 @@ const PROJECTS = [
     stack: ["JavaScript", "HTML5", "CSS3"],
 
     year: "2025",
+
+    github: "https://github.com/rdgptrck/reactify",
   },
 ]
 
@@ -165,6 +173,31 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
+                  {project.github && (
+                    <div className="mt-3">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 font-mono text-xs transition-colors duration-150 underline underline-offset-4"
+                        style={{
+                          color: colors.muted,
+                          textDecorationColor: colors.border,
+                        }}
+                        onMouseEnter={(event) =>
+                          (event.currentTarget.style.color = colors.accent)
+                        }
+                        onMouseLeave={(event) =>
+                          (event.currentTarget.style.color = colors.muted)
+                        }
+                      >
+                        <span>GitHub</span>
+                        <span aria-hidden="true" className="text-xs">
+                          ↗
+                        </span>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
