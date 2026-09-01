@@ -7,7 +7,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="py-8 px-6"
+      className="py-4 px-6"
       style={{ borderTop: `1px solid ${colors.border}` }}
     >
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
