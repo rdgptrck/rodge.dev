@@ -12,7 +12,7 @@ export default function Footer() {
     >
       <div className="max-w-5xl mx-auto flex items-center justify-center text-center">
         <span className="font-mono text-xs" style={{ color: colors.border }}>
-          © 2026 Rodge Pangilinan. Built with React + Tailwind CSS.
+          © 2026 Rodge Patrick Pangilinan. Built with React + Tailwind CSS.
         </span>
       </div>
     </footer>
